@@ -70,7 +70,7 @@ void menu()
 
 void inicializar()
 {
-	// se a lista j� possuir elementos
+	// se a lista já possuir elementos
 // libera a memoria ocupada
 	NO* aux = primeiro;
 	while (aux != NULL) {
@@ -114,31 +114,55 @@ void exibirElementos()
 
 void inserirElemento()
 {
-	// aloca memoria dinamicamente para o novo elemento
-	NO* novo = (NO*)malloc(sizeof(NO));
-	if (novo == NULL)
-	{
-		return;
-	}
+    // Aloca memória dinamicamente para o novo elemento
+    NO* novo = (NO*)malloc(sizeof(NO));
+    if (novo == NULL)
+    {
+        return;
+    }
 
-	cout << "Digite o elemento: ";
-	cin >> novo->valor;
-	novo->prox = NULL;
+    cout << "Digite o elemento: ";
+    cin >> novo->valor;
+    novo->prox = NULL;
 
-	if (primeiro == NULL)
-	{
-		primeiro = novo;
-	}
-	else
-	{
-		// procura o final da lista
-		NO* aux = primeiro;
-		while (aux->prox != NULL) {
-			aux = aux->prox;
-		}
-		aux->prox = novo;
-	}
+    // Se a lista estiver vazia, insere no início
+    if (primeiro == NULL)
+    {
+        primeiro = novo;
+        return;
+    }
+
+    // Verifica se o valor já existe na lista
+    NO* atual = primeiro;
+    NO* anterior = NULL;
+
+    while (atual != NULL && atual->valor < novo->valor)
+    {
+        anterior = atual;
+        atual = atual->prox;
+    }
+
+    // Se o valor já existe, não insere e libera a memória alocada
+    if (atual != NULL && atual->valor == novo->valor)
+    {
+        cout << "Valor já existe na lista. Não será inserido." << endl;
+        free(novo);
+        return;
+    }
+
+    // Insere o novo nó na posição correta
+    if (anterior == NULL) // Inserção no início
+    {
+        novo->prox = primeiro;
+        primeiro = novo;
+    }
+    else // Inserção no meio ou fim
+    {
+        anterior->prox = novo;
+        novo->prox = atual;
+    }
 }
+
 
 void excluirElemento()
 {
