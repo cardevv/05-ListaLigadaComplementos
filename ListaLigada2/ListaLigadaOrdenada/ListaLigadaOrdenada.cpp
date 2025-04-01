@@ -23,7 +23,7 @@ NO* posicaoElemento(int numero);
 
 int main()
 {
-	menu();gfg
+	menu();
 }
 
 void menu()
