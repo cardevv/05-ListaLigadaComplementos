@@ -23,7 +23,7 @@ NO* posicaoElemento(int numero);
 
 int main()
 {
-	menu();
+	menu();gfg
 }
 
 void menu()
@@ -114,55 +114,59 @@ void exibirElementos()
 
 void inserirElemento()
 {
-    // Aloca memória dinamicamente para o novo elemento
-    NO* novo = (NO*)malloc(sizeof(NO));
-    if (novo == NULL)
-    {
-        return;
-    }
+	// aloca memoria dinamicamente para o novo elemento
+	NO* novo = (NO*)malloc(sizeof(NO));
+	if (novo == NULL)
+	{
+		return;
+	}
 
-    cout << "Digite o elemento: ";
-    cin >> novo->valor;
-    novo->prox = NULL;
+	cout << "Digite o elemento: ";
+	cin >> novo->valor;
+	novo->prox = NULL;
 
-    // Se a lista estiver vazia, insere no início
-    if (primeiro == NULL)
-    {
-        primeiro = novo;
-        return;
-    }
+	if (primeiro == NULL)
+	{
+		primeiro = novo;
+		return;
+	}
 
-    // Verifica se o valor já existe na lista
-    NO* atual = primeiro;
-    NO* anterior = NULL;
+	NO* atual = primeiro;
+	NO* anterior = NULL;
 
-    while (atual != NULL && atual->valor < novo->valor)
-    {
-        anterior = atual;
-        atual = atual->prox;
-    }
+	while (atual != NULL && atual->valor < novo->valor) {
 
-    // Se o valor já existe, não insere e libera a memória alocada
-    if (atual != NULL && atual->valor == novo->valor)
-    {
-        cout << "Valor já existe na lista. Não será inserido." << endl;
-        free(novo);
-        return;
-    }
 
-    // Insere o novo nó na posição correta
-    if (anterior == NULL) // Inserção no início
-    {
-        novo->prox = primeiro;
-        primeiro = novo;
-    }
-    else // Inserção no meio ou fim
-    {
-        anterior->prox = novo;
-        novo->prox = atual;
-    }
+		anterior = atual;
+		atual = atual->prox;
+
+
+
+	}
+
+
+	if (atual != NULL && atual->valor == novo->valor) {
+
+		cout << "Valor ja existe na lista" << endl;
+		free(novo);
+		return;
+
+
+	} 
+
+	if (anterior == NULL) {
+		novo->prox = primeiro;
+		primeiro = novo;
+
+	}
+	else {
+		anterior->prox = novo;
+		novo->prox = atual;
+	}
+
+
+	
 }
-
 
 void excluirElemento()
 {
@@ -173,5 +177,3 @@ void buscarElemento()
 {
 
 }
-
-

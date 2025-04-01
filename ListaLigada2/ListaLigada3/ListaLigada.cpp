@@ -104,11 +104,9 @@ void exibirElementos()
 	}
 	else {
 		cout << "Elementos: \n";
-		
 		NO* aux = primeiro;
 		while (aux != NULL) {
 			cout << aux->valor << endl;
-			
 			aux = aux->prox;
 		}
 	}
@@ -116,32 +114,29 @@ void exibirElementos()
 
 void inserirElemento()
 {
-    // aloca memória dinamicamente para o novo elemento
-    NO* novo = (NO*)malloc(sizeof(NO));
-    
-    if (novo == NULL)
-    {
-        return;
-    }
+	// aloca memoria dinamicamente para o novo elemento
+	NO* novo = (NO*)malloc(sizeof(NO));
+	if (novo == NULL)
+	{
+		return;
+	}
 
-    cout << "Digite o elemento: ";
-    cin >> novo->valor;
-    novo->prox = NULL;
+	cout << "Digite o elemento: ";
+	cin >> novo->valor;
+	novo->prox = NULL;
 
-    if (primeiro == NULL)
-    {
-        
-        primeiro = novo;
-        ultimo = novo;
-    }
-    else
-    {
-       
-        ultimo->prox = novo;
-        ultimo = novo; 
-    }
+	if (primeiro == NULL)
+	{
+		primeiro = novo;
+		ultimo = novo;
+
+	}
+	else
+	{
+		ultimo->prox = novo;
+			ultimo = novo;
+	}
 }
-
 
 void excluirElemento()
 {
@@ -152,4 +147,3 @@ void buscarElemento()
 {
 
 }
-
